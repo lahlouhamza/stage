@@ -1,0 +1,70 @@
+git init
+
+//aide
+git help config
+
+
+git config --global user.email  "lahloudofus@gmail.com"
+git config --global user.name  "hamza"
+
+//pour voir  la configuration
+
+git config --list
+
+
+//voir les changement qui sont mise en oeuvre projet
+
+git status
+
+//ajouter les fichier non tracker(les nouveau fichier ou les modification) . = all [de valide la modification de fichier]
+
+git add nomfile
+git add .
+git add --all
+
+//commit avec description (j'archive le project)
+git commit  -m "ma premiser modification"
+
+//commit vitte avec add  
+git commit  -a -m "ma premiser modification"
+
+//cree un fichier pour ingnorer les fichier img css.. (.gitignore) crre fichier avec extionsion .gitignore touch=cree
+touch .gitignore
+
+
+//lister les commit
+git log 
+
+//lister le nombre commit 
+git log  -n 3
+git log -n 2 --oneline
+
+// git diff montre les modification entre le project actielle et la dernier commit
+git diff
+
+/ git diff montre les modification entre le project actielle et la dernier commit  pour un fichier -p
+git diff  -p "nomFile."
+
+
+//Revenir en arrière pour voir selement
+git checkout cc70f5291418727c997ae325134ddb1a9986c1af
+//pour revenir:a master
+git checkout master
+
+
+
+//Revenir en arrière et modifier un fichier avec le commit signaler
+git checkout cc70f5291418727c997ae325134ddb1a9986c1af  nomfile.x<
+//annuler la modification
+git checkout master nomfile.x
+
+
+
+//annuler tout les modification et return a l'etat initiale du commit master
+git reset --hard
+
+***************************
+//return a une etait du project avec id 
+git reset 0fabee0
+//ou
+git reset fb50da2  --hard
