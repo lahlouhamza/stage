@@ -9,4 +9,14 @@ class ArticlesController extends AppController
 
 		debug($this->Article->find('all'));
 	}
+
+
+	 public function beforeFilter() {
+        
+       //parent::beforeFilter();
+
+         }
+
+
+
 }
