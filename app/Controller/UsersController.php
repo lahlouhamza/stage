@@ -44,7 +44,7 @@ class UsersController extends AppController
 
       		if($this->Auth->login()){
 
-      		 $this->redirect(array('controller' => 'Articles', 'action' => 'index'));
+      		 $this->redirect(array('controller' => 'Profils', 'action' => 'index'));
       		}
       		else{ $this->Session->setFlash("incorrect username or password or compte non activer "); }
       	}
@@ -119,6 +119,8 @@ if($activ==1){
 
       else{$this->User->saveField("active","1");
           
+          $this->LoadModel("Profil");
+          $this->Profil->save(array("id"=>$id,"img"=>"profil.jpg"));
            $this->Session->setFlash("<h1>compte activer avec success</h1>  <a href='/stage/Users/login'>se connecter</a>");}
 
 
