@@ -66,6 +66,14 @@ class UsersController extends AppController
 
       if($this->request->is('post')){
 
+
+        $captch=$_POST["g-recaptcha-response"];
+        $captchCle="6LfJUhgTAAAAAIGf67GL8D9JlXtXjoKTruQAEwQv";
+        $urlCaptch="https://www.google.com/recaptcha/api/siteverify?secret=$captchCle&response=$captch";
+        $rsp=file_get_contents($urlCaptch);
+        $arry=json_decode($rsp,true);
+        if($arry["success"]==true){ 
+
                
                
               
@@ -90,7 +98,10 @@ class UsersController extends AppController
                          	$this->Session->setFlash('password invalidate');
                          }
 
-                }
+                }else{ $this->Session->setFlash('impossible de valider son captcha');}  
+
+
+              }
 		 }
 
 
