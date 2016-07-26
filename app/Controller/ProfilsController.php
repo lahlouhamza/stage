@@ -9,6 +9,8 @@ class ProfilsController extends AppController
 
 		debug($this->Profil->find('all'));
 			debug($this->Auth->user());
+
+		
       	
 	}
 
