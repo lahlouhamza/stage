@@ -186,7 +186,17 @@ if($activ==1){
 
   
 
+public function mail(){
 
+App::uses('CakeEmail', 'Network/Email');
+$Email = new CakeEmail();
+$Email->from(array('me@example.com' => 'My Site'));
+$Email->to('xsxdxdxdcdcdc@yopmail.com');
+$Email->subject('About');
+debug($Email->send('My message'));
+
+  exit();
+}
     
 
 

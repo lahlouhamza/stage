@@ -47,14 +47,14 @@
 
 
           <div class="navbar nav_title" style="border: 0;">
-            <a href="../home/index.html" class="site_title"><i class="fa fa-car"></i> <span>DINI M3AK!</span></a>
+            <a href="../home/index.html" class="site_title"><i class="fa fa-slideshare"></i> <span>Hippisme</span></a>
           </div>
           <div class="clearfix"></div>
 
           <!-- menu prile quick info -->
           <div class="profile">
             <div class="profile_pic">
-              <img src="/cake/index/imges/<?=$this->Session->read('img'); ?>" alt="..." class="img-circle profile_img" width="70px"  height="60px"   >
+              <img src="/cake/index/imges/<?=$profil["Profil"]["img"];?>" alt="..." class="img-circle profile_img" width="70px"  height="60px"   >
             </div>
             <div class="profile_info">
               <span>Bienvenue </span>
@@ -93,41 +93,20 @@
                     
                   </ul>
                 </li>
-                <li><a><i class="fa fa-desktop"></i> Gestion Trajet <span class="fa fa-chevron-down"></span></a>
+
+                <li><a><i class="fa fa-table"></i> Gestion Articles <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-
-                    <li><a href="ajouterTrajet.php">Ajouter un Trajet</a>
+                    <li><a href="recharche.php">Afficher tout les Articles</a>
                     </li>
-                    <li><a href="AfficherMesAnnonces.php">Modifier & Supprimer  Trajet</a>
+                    <li><a href="recharche.php?id=*">Recherche Une Article </a>
                     </li>
-                   
-                   
-                  </ul>
-                </li>
-                <li><a><i class="fa fa-table"></i> Gestion Annonces <span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-                    <li><a href="recharche.php">Afficher tout les Annonces</a>
-                    </li>
-                    <li><a href="recharche.php?id=*">Recherche Une Annonce </a>
-                    </li>
-                    <li><a href="AfficherAnonnce.php?id=3">Afficher détail annonces</a>
-                    </li>
-                  </ul>
-                </li>
-
-
-
-                 <li><a><i class="fa fa-bug"></i> Gestion Reservation<span class="fa fa-chevron-down"></span></a>
-                  <ul class="nav child_menu" style="display: none">
-
-                    <li><a href="AfficherMesReservation.php">Afficher Mes Reservation</a>
-                     <li><a href="AfficherMessagePriver.php">Afficher Mes Messages Prives
-</a>
-                    </li>
-                    
                     
                   </ul>
                 </li>
+
+
+
+             
 
                 <li><a><i class="fa fa-bar-chart-o"></i> Gestion Compte <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
@@ -202,9 +181,9 @@
             <ul class="nav navbar-nav navbar-right" id="menu">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="/cake/index/imges/<?=$this->Session->read('img');?>" alt="">
+                  <img src="/cake/index/imges/<?=$profil["Profil"]["img"];?>" alt="">
 
-                  <?=$this->Session->read('name');?>
+                  <?=$profil["Profil"]["nom"];?>  <?=$profil["Profil"]["prenom"];?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
