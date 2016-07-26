@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 22 Juillet 2016 à 20:12
+-- Généré le :  Mar 26 Juillet 2016 à 21:20
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.5.30
 
@@ -183,24 +183,51 @@ INSERT INTO `pays` (`id`, `nom`) VALUES
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `profils`
+--
+
+CREATE TABLE `profils` (
+  `id` int(11) NOT NULL,
+  `nom` varchar(255) NOT NULL,
+  `prenom` varchar(255) NOT NULL,
+  `sexe` varchar(255) NOT NULL,
+  `telephone` varchar(255) NOT NULL,
+  `created` datetime NOT NULL,
+  `img` varchar(255) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `profils`
+--
+
+INSERT INTO `profils` (`id`, `nom`, `prenom`, `sexe`, `telephone`, `created`, `img`, `user_id`) VALUES
+(1, 'lahlou', 'hamza', 'homme', '06012873140', '2016-07-26 01:03:21', '2307478492.jpg', 1),
+(2, '', '', '', '', '0000-00-00 00:00:00', '8027508010689508_831530923576463_3476372534942649749_n.jpg', 2);
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `users`
 --
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `login` varchar(255) NOT NULL,
-  `passe` varchar(255) NOT NULL,
+  `username` varchar(255) NOT NULL,
+  `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `created` datetime NOT NULL,
-  `fonctionnalite` int(11) NOT NULL
+  `role` varchar(255) NOT NULL,
+  `active` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `users`
 --
 
-INSERT INTO `users` (`id`, `login`, `passe`, `email`, `created`, `fonctionnalite`) VALUES
-(1, 'hamza', 'hamza', 'lahloudofus@gmail.com', '2016-07-15 00:00:00', 0);
+INSERT INTO `users` (`id`, `username`, `password`, `email`, `created`, `role`, `active`) VALUES
+(1, 'hamza', '795631beebc1850d4aac90c874978a017353fb7a', 'lahloudofus@gmail.com', '2016-07-15 00:00:00', 'admin', 1),
+(2, 'admin', '4995c5278965e5dd6f1b7e32df922bca4ba0a4a7', 'admin@gmail.com', '2016-07-25 22:44:15', 'user', 1);
 
 -- --------------------------------------------------------
 
@@ -275,6 +302,12 @@ ALTER TABLE `pays`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `profils`
+--
+ALTER TABLE `profils`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `users`
 --
 ALTER TABLE `users`
@@ -331,10 +364,15 @@ ALTER TABLE `journals`
 ALTER TABLE `pays`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
+-- AUTO_INCREMENT pour la table `profils`
+--
+ALTER TABLE `profils`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+--
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 --
 -- AUTO_INCREMENT pour la table `villes`
 --

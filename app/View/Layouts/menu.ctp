@@ -54,11 +54,15 @@
           <!-- menu prile quick info -->
           <div class="profile">
             <div class="profile_pic">
-              <img src="/cake/index/imges/<?=$profil["Profil"]["img"];?>" alt="..." class="img-circle profile_img" width="70px"  height="60px"   >
+              <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img")); ?>
+              <style type="text/css">
+                
+                .profile_img{width:70px; height: 60px; border-radius: 50%}
+              </style>
             </div>
             <div class="profile_info">
               <span>Bienvenue </span>
-              <h2> <?=$this->Session->read('name'); ?></h2>
+              
             </div>
           </div>
           <!-- /menu prile quick info -->
@@ -69,7 +73,7 @@
           <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
 
             <div class="menu_section">
-              <h3>General</h3>
+              <h3><?=$profil["Profil"]["nom"];?>  <?=$profil["Profil"]["prenom"];?></h3>
               <ul class="nav side-menu">
                 <li><a><i class="fa fa-home"></i> Home <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
@@ -82,14 +86,16 @@
                 <li><a><i class="fa fa-edit"></i> Profil <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     
-                    <li><a href="profil.php">Afficher les Données profil</a>
+                    <li>
+                    <?= $this->Html->link("Afficher les Données profil", array('controller' => 'Profils', 'action' => 'index')) ?>
                     </li>
-                    <li><a href="profil.php?form=form1">Editer Mon profil</a>
+                    <li>
+                    <?= $this->Html->link("Editer Mon profil", array('controller' => 'Profils', 'action' => 'editprofil')) ?>
                     </li>
-                    <li><a href="profil.php?form=form2">Editer Photo de  profil</a>
+                    <li>
+                     <?= $this->Html->link("Editer Photo de  profil", array('controller' => 'Profils', 'action' => 'saveimg')) ?>
                     </li>
-                    <li><a href="profil.php?form=preferences">Editer Mes preferences</a>
-                    </li>
+                    
                     
                   </ul>
                 </li>
@@ -105,17 +111,33 @@
                 </li>
 
 
+                    <li><a><i class="fa fa-table"></i> Gestion des journaux <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li><a href="recharche.php">Afficher tout les journaux</a>
+                    </li>
+                    <li><a href="recharche.php?id=*">Recherche Une journal </a>
+                    </li>
+
+                     <li><a href="recharche.php?id=*">Publier Une journal </a>
+                    </li>
+                    
+                  </ul>
+                </li>
+
+
 
              
 
                 <li><a><i class="fa fa-bar-chart-o"></i> Gestion Compte <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
 
-                    <li><a href="../changerPasse.php">Changer Passe</a>
+
+                    <li>
+                      <?= $this->Html->link("Changer Password", array('controller' => 'Users', 'action' => 'changerPassword')) ?>
                     </li>
-                    <li><a href="../changEmail.php">Changer Email</a>
-                    </li>
-                    <li><a href="../Deconnection.php">Deconnection</a>
+                   
+                    <li>
+                      <?= $this->Html->link("Deconnection", array('controller' => 'Users', 'action' => 'logout')) ?>
                     </li>
                     
                   </ul>
@@ -181,23 +203,21 @@
             <ul class="nav navbar-nav navbar-right" id="menu">
               <li class="">
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  <img src="/cake/index/imges/<?=$profil["Profil"]["img"];?>" alt="">
+                  
+                   <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP')); ?>
+             
 
                   <?=$profil["Profil"]["nom"];?>  <?=$profil["Profil"]["prenom"];?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
-                  <li><a href="profil.php">  Profile</a>
-                  </li>
                   <li>
-                    <a href="AfficherMesAnnonces.php">
-                      <span class="badge bg-red pull-right">New</span>
-                      <span>Trajet</span>
-                    </a>
+                   <?= $this->Html->link("Profile", array('controller' => 'Profils', 'action' => '')) ?>
                   </li>
+                 
 
                   
-                  <li><a href="../Deconnection.php"><i class="fa fa-sign-out pull-right"></i> Deconnection</a>
+                  <li> <?= $this->Html->link("Deconnection", array('controller' => 'Users', 'action' => 'logout')) ?>
                   </li>
                 </ul>
               </li>
@@ -218,14 +238,20 @@
                   <li>
                     <a>
                       <span class="image">
-                                        <img src="/cake/index/img/profil.jpg" alt="Profile Image" />
+                                        <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img")); ?>
+
+             
+              <style type="text/css">
+                
+                .profile_img{width:70px; height: 60px; border-radius: 50%}
+              </style>
                                     </span>
                       <span>
                                         <span>John   Admin</span>
                       <span class="time">3 mins ago</span>
                       </span>
                       <span class="message">
-                                       bienvenue sur Dini M3ak <br>
+                                       bienvenue sur hippisme <br>
                                        N hésitez pas a appelez nous service professionnelle 
                                     </span>
                     </a>
@@ -243,7 +269,7 @@
 <li>
                     <a href='AfficherMessagePriver.php?id=$data2->IdMessage'>
                       <span  >
-                                        <img  style='border-radius:50%'  src='/cake/index/img/profil.jpg' alt='Profile Image' width=30px height=30px />
+                                       <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img")); ?>
                                     </span>
                       <span>
                                         <span> $data2->nom $data2->Prenom</span>

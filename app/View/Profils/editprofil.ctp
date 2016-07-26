@@ -6,9 +6,7 @@
       <!-- left column -->
       <div class="col-md-3">
         <div class="text-center">
-          
-
-          <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img img")); ?>
+           <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img img")); ?>
           <style type="text/css">
             .img{ width: 200px;height: 200px;}
 
@@ -17,7 +15,7 @@
           
           
           
-           <!-- ana zatou-->
+          <!-- ana zatou-->
           <div class="form-group" >
 
             <div class="input-group " >
@@ -63,21 +61,21 @@
           <div class="form-group">
             <label class="col-lg-3 control-label">Nom :</label>
             <div class="col-lg-8">
-               <?= $this->Form->input("nom",array("disabled","label"=>"")); ?>
+               <?= $this->Form->input("nom",array("label"=>"")); ?>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-lg-3 control-label">Prenom :</label>
             <div class="col-lg-8">
-              <?= $this->Form->input("prenom",array("disabled","label"=>"")); ?>
+              <?= $this->Form->input("prenom",array("label"=>"")); ?>
             </div>
           </div>
 
           <div class="form-group">
             <label class="col-lg-3 control-label">Sexe :</label>
             <div class="col-lg-8">
-              <?= $this->Form->input("sexe",array("disabled","label"=>"")); ?>
+              <?= $this->Form->input("sexe",array("label"=>"")); ?>
             </div>
           </div>
          
@@ -86,7 +84,7 @@
           <div class="form-group">
             <label class="col-md-3 control-label">Telephone :</label>
             <div class="col-md-8">
-              <?= $this->Form->input("telephone",array("disabled","label"=>"")); ?>
+              <?= $this->Form->input("telephone",array("label"=>"")); ?>
           </div>  
 
 
@@ -94,11 +92,12 @@
           <div class="form-group text-center" >
             <label class="col-md-3 control-label"></label>
             <div class="col-md-8">
-              <input type="submit" class="btn btn-primary" value="Save Changes" disabled="disabled">
+              <input type="submit" class="btn btn-primary" value="Save Changes" >
               <span></span>
               <input type="reset" class="btn btn-default" value="Cancel">
             </div>
           </div>
+            <?= $this->Form->input("id"); ?>
         </form>
       </div>
   </div>
