@@ -118,7 +118,9 @@
                     <li><a href="recharche.php?id=*">Recherche Une journal </a>
                     </li>
 
-                     <li><a href="recharche.php?id=*">Publier Une journal </a>
+                     <li>
+
+                     <?= $this->Html->link("Publier  journal", array('controller' => 'Journals', 'action' => 'publierJournal')) ?>
                     </li>
                     
                   </ul>
