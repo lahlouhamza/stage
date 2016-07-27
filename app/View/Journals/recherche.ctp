@@ -1,16 +1,63 @@
+<?php
+ $dateSystheme = date("Y-m-d");
+ ?>
+ <section>
+
+  <form class="form-horizontal"  action="#" method="post" >
+
+          <div class="form-group" style="margin-left:130px;">
 
 
 
-    
-        
-          <div class="page-title">
-            <div class="title_left">
-              <h3>  Gestion des journaux </h3>
             
+            <div class="col-lg-3" >
+
+                 <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-map-marker fa-lg"></i></span>                                    
+           <input name="nom" type="text" class="input-lg form-control cc-number"  placeholder="nom"   id="autocomplete">
+        </div>
             </div>
 
+
+
+           
+
+
+
+            
+            <div class="col-lg-2">
+
+                 <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-credit-card"></i></span>                                    
+          <input name="date" value="<?=$dateSystheme ?>" type="date" class="input-lg form-control cc-number" required>
+        </div>
+            </div>
+
+
+
+
+            <label class="col-lg-1 control-label" > </label>
+            <div class="col-lg-1">
+          <input type="submit" class="btn btn-primary input-lg  " value="   Rechercher  " style="margin-left:35px">
+             </div>
+      
+
+
+
           
-          </div>
+          </form>
+</section>
+<hr>
+
+
+
+
+
+
+
+
+
+
           <div class="clearfix"></div>
 
           <div class="row">
@@ -69,7 +116,7 @@
 $id=$p["Journal"]["id"];
           echo " <a href='detail/$id' class='btn btn-info btn-xs'><i class='fa fa-pencil'></i>&nbsp&nbsp Detail &nbsp &nbsp&nbsp</a>";
 
-            echo " <button type='sumbit' class='btn btn-danger btn-xs' style='width: 150px;'><i class='fa fa-trash-o'></i> &nbsp&nbsp Supprime &nbsp &nbsp&nbsp </button> </form>";
+           
 
         echo "</td>";
 
@@ -111,6 +158,3 @@ $id=$p["Journal"]["id"];
 
 
         </style>
-
-
-

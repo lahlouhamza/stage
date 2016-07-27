@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
   <!-- Meta, title, CSS, favicons, etc. -->
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -113,9 +113,11 @@
 
                     <li><a><i class="fa fa-table"></i> Gestion des journaux <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="recharche.php">Afficher tout les journaux</a>
+                    <li>
+                    <?= $this->Html->link("Afficher tout les journaux", array('controller' => 'Journals', 'action' => 'index')) ?>
                     </li>
-                    <li><a href="recharche.php?id=*">Recherche Une journal </a>
+                    <li>
+                     <?= $this->Html->link("Recherche  journal", array('controller' => 'Journals', 'action' => 'recherche')) ?>
                     </li>
 
                      <li>

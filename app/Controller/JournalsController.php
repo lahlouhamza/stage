@@ -20,7 +20,31 @@ class JournalsController extends AppController
 	public function index(){
 
 
-		debug($this->Journal->find("all"));
+		
+     
+
+
+        if($this->request->is("post")){
+
+
+        	
+        	$this->Journal->delete($this->request->data["Journal"]["id"]);
+        	$this->Session->Setflash("journal supprimé avec succès");
+        	//je supprimer pdf
+        	unlink("uploads/".$this->request->data["Journal"]["src"]);
+
+
+        }
+    
+
+         $data=$this->Journal->find("all");
+        $this->set("data",$data);
+
+
+
+
+
+
 
 /*
 		$this->LoadModel("Categorie");
@@ -71,11 +95,11 @@ debug($this->Ville->find('all'));
 
 
 			
+	$chemin=str_replace(' ','-',basename($_FILES["fileToUpload"]["name"]));
 		
 
-
 $target_dir = "uploads/";
-$target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
+$target_file = $target_dir . $chemin;
 $uploadOk = 1;
 $message="";
 $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
@@ -113,7 +137,7 @@ if ($uploadOk == 0) {
     if (move_uploaded_file($_FILES["fileToUpload"]["tmp_name"], $target_file)) {
 
 
-        $this->request->data["Journal"]["src"]=basename($_FILES["fileToUpload"]["name"]);
+        $this->request->data["Journal"]["src"]=$chemin;
         $this->request->data["Journal"]["extension"]=basename($_FILES["fileToUpload"]["type"]);
         $this->request->data["Journal"]["user_id"]=$this->Auth->user('id');
         $this->Journal->save($this->request->data);
@@ -137,6 +161,66 @@ if ($uploadOk == 0) {
 	}
 
 
+
+  public function detail($id=null){
+
+  	if($id==null){
+  		$this->redirect(array('controller' => 'Journals', 'action' => 'index'));
+  	}
+
+
+
+  	$data=$this->Journal->find('first',array(
+       'conditions'=> array('Journal`.`id'=>$id)
+
+	));
+
+	$this->set("data",$data);
+
+
+  }
+
+
+
+     public function recherche(){
+
+
+ 
+
+     	 if($this->request->is("post")){
+
+
+
+
+        $nom=$this->request->data["nom"];
+        $date=$this->request->data["date"];
+
+
+      
+
+
+
+        $this->set("data",$this->Journal->find('all',array(
+       'conditions'=> array('nom like'=>'%'.$nom.'%','`Journal`.`created` >'=>$date)
+
+	)));
+        	
+
+
+        }else{
+
+        	   $data=$this->Journal->find("all");
+        $this->set("data",$data);
+        }
+    
+
+         
+
+
+
+
+
+     }
 
 
 
