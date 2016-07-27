@@ -111,6 +111,19 @@
                 </li>
 
 
+                   <li><a><i class="fa fa-table"></i> Gestion Categorie  <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li>
+                     <?= $this->Html->link("Afficher Categorie", array('controller' => 'Categories', 'action' => 'index')) ?>
+                    </li>
+                    <li>
+                     <?= $this->Html->link("Ajouter Categorie", array('controller' => 'Categories', 'action' => 'add')) ?>
+                    </li>
+                    
+                  </ul>
+                </li>
+
+
                     <li><a><i class="fa fa-table"></i> Gestion des journaux <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li>

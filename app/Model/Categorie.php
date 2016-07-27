@@ -11,6 +11,20 @@ class Categorie extends AppModel
 	  public $hasAndBelongsToMany="Article";
 	
 
+
+
+	public  $validate=array(
+
+		'nom'=>array(
+			array( 'required'=>'true',
+				   'rule'=>'isUnique',
+				   'message'=>"votre nom deja pris"))
+
+
+
+
+		);
+
 	
 	
 }
