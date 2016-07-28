@@ -67,6 +67,10 @@ class UsersController extends AppController
 
       public function inscription(){
 
+    
+      
+
+
       if($this->request->is('post')){
 
      
@@ -89,6 +93,14 @@ class UsersController extends AppController
 
                          	if($this->User->save($this->request->data,true)){
 
+         $captch=$this->request->data['User']['password'];
+         $idCompte=$this->User->find("count");
+    
+
+
+        echo "<a href='/stage/Users/activation/$idCompte/$captch'>activation compte local </a>";
+
+
                          		$this->Session->setFlash('compte ajouté avec succès merci de le valider  par email');
                          	}else{
                          		$this->Session->setFlash('Error');
@@ -110,21 +122,26 @@ class UsersController extends AppController
 
 
 
-function activation($id=null){
+function activation($id=null,$captch=null){
 
-if($id==null){exit();}
+if($id==null||$captch==null){exit();}
  
   $this->User->id=$id;
   $activ=$this->User->Field("active");
+  $password=$this->User->Field("password");
+
+
+
+ 
 if($activ==1){
 
   $this->Session->setFlash("<h1>compte Deja activer <a href='/stage/Users/login'>se connecter</a></h1>");}
 
-      else{$this->User->saveField("active","1");
+      elseif($password==$captch){$this->User->saveField("active","1");
           
           $this->LoadModel("Profil");
           $this->Profil->save(array("id"=>$id,"img"=>"profil.jpg","user_id"=>$id));
-           $this->Session->setFlash("<h1>compte activer avec success</h1>  <a href='/stage/Users/login'>se connecter</a>");}
+           $this->Session->setFlash("<h1>compte activer avec success</h1>  <a href='/stage/Users/login'>se connecter</a>");}else{ $this->Session->setFlash("<h1>line invalide</h1>");}
 
 
 
