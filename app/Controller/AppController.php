@@ -47,7 +47,7 @@ class AppController extends Controller {
          parent::beforeFilter();
 
           if($this->Auth->user('role')=="admin"){
-            debug($this->Auth->user('role'));
+            //debug($this->Auth->user('role'));
           }else{
 
          $this->redirect(array('controller' => 'users', 'action' => 'login'));
