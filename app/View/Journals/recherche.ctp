@@ -103,6 +103,7 @@
   echo "<tr>";
    echo "<td>".$p["Journal"]["id"]."</td>";
   echo "<td> publier par:".$p["User"]["username"]."<br> extension:".$p["Journal"]["extension"]
+  ."<br>nom:".$p["Journal"]["nom"]
 
   ."</td>";
   echo "<td>".$p["Journal"]["src"]."</td>";
