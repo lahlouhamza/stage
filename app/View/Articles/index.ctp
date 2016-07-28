@@ -29,11 +29,7 @@
 
      
 
-   <span id="Listegalerie"> </span>
-  
-    
-     <input type="button" class="btn btn-primary" value="Ajouter galerie" onclick="ajaxgalerie()">
-<br>
+ 
 
 
 
@@ -44,6 +40,13 @@
 <input type="button" class="btn btn-primary" value="Ajouter Categories" onclick="AjaxListeCategories()">
   
  <br>
+
+
+   <span id="Listegalerie"> </span>
+  
+    
+     <input type="button" class="btn btn-primary" value="Ajouter galerie" onclick="ajaxgalerie()">
+<br>
 
 
   
