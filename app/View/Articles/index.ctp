@@ -3,7 +3,11 @@
 <body>
 
 <div class="row">
-<section class="col-md-2"></section>
+<section class="col-md-2">
+  
+<h2>Publier Acticle</h2>
+
+</section>
 <section class="col-md-8" >
 <?= $this->Form->create("Article",array('enctype' => 'multipart/form-data')); ?>
    
@@ -25,24 +29,22 @@
 
      
 
-   
+   <span id="Listegalerie"> </span>
   
-     <label for="ArticleTitre">galerie</label>
-    <?php echo $this->Form->select('galerie', array(1,2,3,4,5),array("class"=>"form-control"));?>
-     
-
-    <label for="ArticleTitre">categorie</label>
-       <?php  echo "<select   class='form-control' name='categorie' id='categorie'>";
-                 foreach ($Categorie as $p) {
-                                         $id=$p["Categorie"]["id"];
-                                         $nomPay=$p["Categorie"]["nom"];
-                                         echo "<option value='$id'> $nomPay</option>";  }
-           echo "<select>";?>
+    
+     <input type="button" class="btn btn-primary" value="Ajouter galerie" onclick="ajaxgalerie()">
+<br>
 
 
 
+<span id="ListeCategories"> </span>
+
+
+
+<input type="button" class="btn btn-primary" value="Ajouter Categories" onclick="AjaxListeCategories()">
   
  <br>
+
 
   
 
@@ -78,9 +80,48 @@
 $( document ).ready(function() {
   var x=document.getElementById("pays").value;
   ajax(x);
+AjaxListeCategories();
+ ajaxgalerie();
 });
 
+
+
+function AjaxListeCategories(){
+
+    event.preventDefault(); 
+    $chemin="/stage/Articles/ajaxcategorie";
+    console.log($chemin);
+
+       $.get($chemin, {}, function(data){ 
+       $('#ListeCategories').append(data); 
+}); 
+
+}
+
+
+
+function ajaxgalerie(){
+
+    event.preventDefault(); 
+    $chemin="/stage/Articles/ajaxgalerie";
+    console.log($chemin);
+
+       $.get($chemin, {}, function(data){ 
+       $('#Listegalerie').append(data); 
+}); 
+
+}
+
+
+
+
+
+
+
+
 </script>
+
+
 
 
 

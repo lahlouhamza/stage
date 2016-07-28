@@ -9,12 +9,6 @@ class ArticlesController extends AppController
 
 		 $this->LoadModel("Pay");
 
-		//debug($this->Pay->find('all'));
-
-		//$this->request->data["Article"]["pays"]=array(1,2,3,4,5);
-		//debug($this->request->data["Article"]["ville"]);
-
-		//$this->request->data["Article"]["ville"]="4";
 
 		    $data=$this->Pay->find('all');
             $this->set("data",$data);
@@ -23,7 +17,36 @@ class ArticlesController extends AppController
               $Categorie=$this->Categorie->find("all");
                $this->set("Categorie",$Categorie);
 
+
+
+             if($this->request->is('post')){
               
+             	$this->request->data["Article"]["user_id"]=$this->Auth->user('id');
+             	$this->request->data["Article"]["ville_id"]=$this->request->data["villes"];
+             	$this->Article->save($this->request->data);
+             	$this->Session->setflash("Article ajouté avec succès");
+             	
+
+             $Article=$this->Article->find('first',array('order'=> array('Article.id desc')));
+             $id=$Article["Article"]["id"];
+             
+            
+             $this->LoadModel("articles_categories");
+             
+            foreach ($this->request->data["categorie"] as $category_id) {
+
+            $this->articles_categories->save(array("article_id"=>$id,"category_id"=>$category_id));
+             $this->articles_categories->create();
+
+               }
+                 
+
+               
+
+
+
+
+             }
 
 
 		
@@ -43,6 +66,73 @@ class ArticlesController extends AppController
        $this->set("profil",$data);
 
          }
+
+
+
+
+         public function ajaxcategorie(){
+
+         $this->layout=null;
+         $this->LoadModel("Categorie");
+         $Categorie=$this->Categorie->find("all");
+             
+
+       $ListCategorie="<label for='ArticleTitre' id='categorie'>Categorie</label>";
+       $ListCategorie.="<select   class='form-control' name='categorie[]' >";
+              
+              foreach ($Categorie as $p) {
+                                         $id=$p["Categorie"]["id"];
+                                         $nomPay=$p["Categorie"]["nom"];
+                                         $ListCategorie.= "<option value='$id'> $nomPay</option>";  }
+            $ListCategorie.= "<select>";
+
+            ;
+
+
+             
+             echo $ListCategorie;
+           
+         
+
+
+         }
+
+
+
+          public function ajaxgalerie(){
+
+         $this->layout=null;
+         $this->LoadModel("Galerie");
+         $Galerie=$this->Galerie->find("all");
+            
+
+       $ListGalerie="<label for='ArticleTitre' id='Galerie'>Galerie</label>";
+       $ListGalerie.="<select   class='form-control' name='Galerie[]' >";
+              
+              foreach ($Galerie as $p) {
+                                         $id=$p["Galerie"]["id"];
+                                         $nomGalerie=$p["Galerie"]["nom"];
+                                         $ListGalerie.= "<option value='$id'> $nomGalerie</option>";  }
+            $ListGalerie.= "<select>";
+
+            ;
+
+
+             
+             echo $ListGalerie;
+           
+         
+
+
+         }
+
+
+        function Afficher(){
+
+        	debug($this->Article->find("all"));
+
+        	
+        }
 
 
 

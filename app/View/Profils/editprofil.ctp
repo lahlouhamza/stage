@@ -1,6 +1,6 @@
 
 <div class="container">
-    <h1><a href="../accueil.php">Edit Profile</a></h1>
+    <h1><a href="#">Edit Profile</a></h1>
     <hr>
   <div class="row" >
       <!-- left column -->

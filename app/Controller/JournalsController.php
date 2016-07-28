@@ -164,6 +164,10 @@ if ($uploadOk == 0) {
 
   public function detail($id=null){
 
+
+
+  
+
   	if($id==null){
   		$this->redirect(array('controller' => 'Journals', 'action' => 'index'));
   	}
@@ -222,6 +226,21 @@ if ($uploadOk == 0) {
 
      }
 
+
+
+
+
+      public function telechargerpdf($id=null){
+
+        
+
+
+      }
+
+
+
+
+ 
 
 
 

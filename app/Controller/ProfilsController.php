@@ -65,7 +65,7 @@ class ProfilsController extends AppController
         $tmp_name=$this->request->data['Profil']['img']['tmp_name'];
 
           $check = getimagesize($tmp_name);
-           if($check !== false) {$uploadOk = 1;}else{  $this->Session->setFlash("Le fichier est pas une image");
+           if($check !== false) {$uploadOk = 1;}else{  $this->Session->setFlash("type fichier invalide");
                                                                                                $uploadOk = 0; }
 
 

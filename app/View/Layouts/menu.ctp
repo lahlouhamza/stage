@@ -102,10 +102,13 @@
 
                 <li><a><i class="fa fa-table"></i> Gestion Articles <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
-                    <li><a href="recharche.php">Afficher tout les Articles</a>
+                    <li>
+                    <?= $this->Html->link(" Afficher Article", array('controller' => 'Articles', 'action' => 'Afficher')) ?>
+
                     </li>
-                    <li><a href="recharche.php?id=*">Recherche Une Article </a>
-                    </li>
+                    <li>
+
+                    <?= $this->Html->link(" Publier Article", array('controller' => 'Articles', 'action' => 'index')) ?>
                     
                   </ul>
                 </li>
@@ -255,7 +258,7 @@
                   <li>
                     <a>
                       <span class="image">
-                                        <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img")); ?>
+                     <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle ")); ?>
 
              
               <style type="text/css">
@@ -283,21 +286,7 @@
 
 
 
-<li>
-                    <a href='AfficherMessagePriver.php?id=$data2->IdMessage'>
-                      <span  >
-                                       <?= $this->Html->image($profil["Profil"]["img"] , array('alt' => 'CakePHP','class'=>"img-circle profile_img")); ?>
-                                    </span>
-                      <span>
-                                        <span> $data2->nom $data2->Prenom</span>
-                      <span class='time'>3 mins ago</span>
-                      </span>
-                      <span class='message'>
-                                        
-                                        $data2->Message
-                                    </span>
-                    </a>
-                  </li>
+
        
        
                  <li>

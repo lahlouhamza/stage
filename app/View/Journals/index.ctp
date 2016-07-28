@@ -67,9 +67,16 @@
       echo  $this->Form->input("src",array("value"=>$p["Journal"]["src"],"type"=>"hidden"));
 
 $id=$p["Journal"]["id"];
-          echo " <a href='detail/$id' class='btn btn-info btn-xs'><i class='fa fa-pencil'></i>&nbsp&nbsp Detail &nbsp &nbsp&nbsp</a>";
+
+  $source=$p["Journal"]["src"];
+
+           echo " <a href='/stage/uploads/$source' class='btn btn-success btn-xs'><i class='fa fa-pencil'></i>&nbsp&nbsp Telecharger Pdf &nbsp &nbsp&nbsp</a>";
+           
+          echo " <a href='/stage/Journals/detail/$id' class='btn btn-info btn-xs'><i class='fa fa-pencil'></i>&nbsp&nbsp Detail &nbsp &nbsp&nbsp</a>";
 
             echo " <button type='sumbit' class='btn btn-danger btn-xs' style='width: 150px;'><i class='fa fa-trash-o'></i> &nbsp&nbsp Supprime &nbsp &nbsp&nbsp </button> </form>";
+
+
 
         echo "</td>";
 

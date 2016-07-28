@@ -116,6 +116,10 @@
 $id=$p["Journal"]["id"];
           echo " <a href='detail/$id' class='btn btn-info btn-xs'><i class='fa fa-pencil'></i>&nbsp&nbsp Detail &nbsp &nbsp&nbsp</a>";
 
+$source=$p["Journal"]["src"];
+
+           echo " <a href='/stage/uploads/$source' class='btn btn-success btn-xs'><i class='fa fa-pencil'></i>&nbsp&nbsp Telecharger Pdf &nbsp &nbsp&nbsp</a>";
+
            
 
         echo "</td>";
