@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Jeu 28 Juillet 2016 à 23:01
+-- Généré le :  Ven 29 Juillet 2016 à 19:34
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.5.30
 
@@ -76,7 +76,8 @@ INSERT INTO `articles` (`id`, `titre`, `contenu`, `created`, `user_id`, `ville_i
 (34, '', '', '2016-07-28 20:18:41', 1, 1),
 (35, '', '', '2016-07-28 20:19:08', 1, 1),
 (36, '', '', '2016-07-28 20:20:52', 1, 1),
-(37, '', '', '2016-07-28 20:22:02', 1, 3);
+(37, '', '', '2016-07-28 20:22:02', 1, 3),
+(38, '', '', '2016-07-29 02:16:42', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -113,7 +114,8 @@ INSERT INTO `articles_categories` (`id`, `article_id`, `category_id`) VALUES
 (53, 30, 4),
 (54, 36, 4),
 (55, 37, 9),
-(56, 37, 10);
+(56, 37, 10),
+(57, 38, 4);
 
 -- --------------------------------------------------------
 
@@ -136,7 +138,8 @@ INSERT INTO `articles_galeries` (`id`, `article_id`, `galery_id`) VALUES
 (65, 36, 1),
 (66, 36, 1),
 (67, 37, 2),
-(68, 37, 3);
+(68, 37, 3),
+(69, 38, 1);
 
 -- --------------------------------------------------------
 
@@ -227,7 +230,33 @@ CREATE TABLE `journals` (
 
 INSERT INTO `journals` (`id`, `src`, `created`, `user_id`, `nom`, `extension`) VALUES
 (23, 'liste_css.pdf', '2016-07-27 16:47:27', 1, '', 'pdf'),
-(24, 'certive.pdf', '2016-07-27 18:16:44', 1, 'test', 'pdf');
+(24, 'certive.pdf', '2016-07-27 18:16:44', 1, 'test', 'pdf'),
+(25, '11.pdf', '2016-07-29 03:16:30', 1, 'x', 'pdf');
+
+-- --------------------------------------------------------
+
+--
+-- Structure de la table `medias`
+--
+
+CREATE TABLE `medias` (
+  `id` int(11) NOT NULL,
+  `created` datetime NOT NULL,
+  `type` varchar(50) NOT NULL,
+  `position` int(11) NOT NULL,
+  `src` varchar(255) NOT NULL,
+  `extension` varchar(255) NOT NULL,
+  `galery_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Contenu de la table `medias`
+--
+
+INSERT INTO `medias` (`id`, `created`, `type`, `position`, `src`, `extension`, `galery_id`) VALUES
+(26, '2016-07-29 19:29:01', '', 0, '20160627_154045.jpg', 'jpg', 17),
+(27, '2016-07-29 19:31:20', '', 0, '20160627_154045.jpg', 'jpg', 18),
+(28, '2016-07-29 19:31:20', '', 0, '20160627_154053.jpg', 'jpg', 18);
 
 -- --------------------------------------------------------
 
@@ -371,6 +400,12 @@ ALTER TABLE `journals`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Index pour la table `medias`
+--
+ALTER TABLE `medias`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Index pour la table `pays`
 --
 ALTER TABLE `pays`
@@ -402,17 +437,17 @@ ALTER TABLE `villes`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=38;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
 --
 -- AUTO_INCREMENT pour la table `articles_categories`
 --
 ALTER TABLE `articles_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
 --
 -- AUTO_INCREMENT pour la table `articles_galeries`
 --
 ALTER TABLE `articles_galeries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=69;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 --
 -- AUTO_INCREMENT pour la table `categories`
 --
@@ -427,12 +462,17 @@ ALTER TABLE `descriptions`
 -- AUTO_INCREMENT pour la table `galeries`
 --
 ALTER TABLE `galeries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT pour la table `journals`
 --
 ALTER TABLE `journals`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=26;
+--
+-- AUTO_INCREMENT pour la table `medias`
+--
+ALTER TABLE `medias`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT pour la table `pays`
 --
