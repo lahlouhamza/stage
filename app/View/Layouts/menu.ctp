@@ -114,6 +114,21 @@
                 </li>
 
 
+
+                  <li><a><i class="fa fa-table"></i> Gestion Galeries <span class="fa fa-chevron-down"></span></a>
+                  <ul class="nav child_menu" style="display: none">
+                    <li>
+                    <?= $this->Html->link(" Chercher Gallery", array('controller' => 'Galeries/', 'action' => 'recherche')) ?>
+
+                    </li>
+                    <li>
+
+                    <a href="/stage/Galeries/"> Ajouter Gallery</a>
+                    
+                  </ul>
+                </li>
+
+
                    <li><a><i class="fa fa-table"></i> Gestion Categorie  <span class="fa fa-chevron-down"></span></a>
                   <ul class="nav child_menu" style="display: none">
                     <li>

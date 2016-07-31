@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  127.0.0.1
--- Généré le :  Ven 29 Juillet 2016 à 19:34
+-- Généré le :  Dim 31 Juillet 2016 à 22:28
 -- Version du serveur :  10.1.9-MariaDB
 -- Version de PHP :  5.5.30
 
@@ -77,7 +77,8 @@ INSERT INTO `articles` (`id`, `titre`, `contenu`, `created`, `user_id`, `ville_i
 (35, '', '', '2016-07-28 20:19:08', 1, 1),
 (36, '', '', '2016-07-28 20:20:52', 1, 1),
 (37, '', '', '2016-07-28 20:22:02', 1, 3),
-(38, '', '', '2016-07-29 02:16:42', 1, 1);
+(38, '', '', '2016-07-29 02:16:42', 1, 1),
+(39, '', '', '2016-07-30 02:32:03', 1, 1);
 
 -- --------------------------------------------------------
 
@@ -115,7 +116,9 @@ INSERT INTO `articles_categories` (`id`, `article_id`, `category_id`) VALUES
 (54, 36, 4),
 (55, 37, 9),
 (56, 37, 10),
-(57, 38, 4);
+(57, 38, 4),
+(58, 39, 7),
+(59, 39, 7);
 
 -- --------------------------------------------------------
 
@@ -134,12 +137,7 @@ CREATE TABLE `articles_galeries` (
 --
 
 INSERT INTO `articles_galeries` (`id`, `article_id`, `galery_id`) VALUES
-(64, 36, 1),
-(65, 36, 1),
-(66, 36, 1),
-(67, 37, 2),
-(68, 37, 3),
-(69, 38, 1);
+(2, 39, 22);
 
 -- --------------------------------------------------------
 
@@ -197,17 +195,21 @@ INSERT INTO `descriptions` (`id`, `created`, `contenu`, `article_id`) VALUES
 
 CREATE TABLE `galeries` (
   `id` int(11) NOT NULL,
-  `nom` varchar(255) NOT NULL
+  `nom` varchar(255) NOT NULL,
+  `created` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `galeries`
 --
 
-INSERT INTO `galeries` (`id`, `nom`) VALUES
-(1, 'g1'),
-(2, 'Galerie2'),
-(3, 'Galerie3');
+INSERT INTO `galeries` (`id`, `nom`, `created`) VALUES
+(22, 'kfekfelfk', '0000-00-00 00:00:00'),
+(23, 'efzefkpzekf^zepfz', '2016-07-27 00:00:00'),
+(24, 'jalal', '2016-07-30 02:29:33'),
+(27, 'simo', '2016-07-31 15:51:32'),
+(31, 'hamzatest', '2016-07-31 22:20:56'),
+(32, 'jajajaj', '2016-07-31 22:23:26');
 
 -- --------------------------------------------------------
 
@@ -254,9 +256,28 @@ CREATE TABLE `medias` (
 --
 
 INSERT INTO `medias` (`id`, `created`, `type`, `position`, `src`, `extension`, `galery_id`) VALUES
-(26, '2016-07-29 19:29:01', '', 0, '20160627_154045.jpg', 'jpg', 17),
-(27, '2016-07-29 19:31:20', '', 0, '20160627_154045.jpg', 'jpg', 18),
-(28, '2016-07-29 19:31:20', '', 0, '20160627_154053.jpg', 'jpg', 18);
+(31, '2016-07-29 19:47:24', '1', 0, '1.mp4', 'mp4', 20),
+(32, '2016-07-29 19:47:24', '1', 1, '2.mp4', 'mp4', 20),
+(33, '2016-07-29 19:49:58', '0', 0, '20160627_154102.jpg', 'jpg', 21),
+(34, '2016-07-29 20:17:24', '0', 3, '20160627_001120.jpg', 'jpg', 22),
+(35, '2016-07-29 20:17:24', '1', 1, '1.mp4', 'mp4', 22),
+(36, '2016-07-29 20:30:02', '0', 0, '20160627_154048.jpg', 'jpg', 23),
+(37, '2016-07-29 20:30:02', '0', 1, '20160627_154032.jpg', 'jpg', 23),
+(38, '2016-07-30 02:29:33', '0', 0, '20160627_001120.jpg', 'jpg', 24),
+(39, '2016-07-30 02:29:33', '0', 1, '20160627_154048.jpg', 'jpg', 24),
+(42, '2016-07-31 15:11:37', '0', 2, '547649_503161203080105_7017529_n.jpg', 'jpg', 26),
+(44, '2016-07-31 15:51:32', '0', 1, '2.jpg', 'jpg', 27),
+(45, '2016-07-31 15:51:32', '0', 2, '270805_465785700150989_506810966_n.jpg', 'jpg', 27),
+(46, '2016-07-31 15:51:32', '0', 3, '547649_503161203080105_7017529_n.jpg', 'jpg', 27),
+(47, '2016-07-31 15:51:32', '0', 0, '599437_373812576014969_1331073533_n.jpg', 'jpg', 27),
+(48, '2016-07-31 20:34:39', '0', 4, '319913_503161626413396_166230944_n.jpg', 'jpg', 27),
+(49, '2016-07-31 20:35:46', '0', 0, '319913_503161626413396_166230944_n.jpg', 'jpg', 22),
+(51, '2016-07-31 20:36:10', '0', 4, '547649_503161203080105_7017529_n.jpg', 'jpg', 22),
+(52, '2016-07-31 20:36:21', '0', 2, '10378165_697111117018445_142818796115463578_n.jpg', 'jpg', 22),
+(54, '2016-07-31 22:20:56', '1', 0, 'Untitled.mp4', 'mp4', 31),
+(55, '2016-07-31 22:23:26', '0', 1, '2.jpg', 'jpg', 32),
+(57, '2016-07-31 22:23:26', '0', 0, '10378165_697111117018445_142818796115463578_n.jpg', 'jpg', 32),
+(58, '2016-07-31 22:23:52', '0', 3, '547649_503161203080105_7017529_n.jpg', 'jpg', 32);
 
 -- --------------------------------------------------------
 
@@ -303,7 +324,8 @@ INSERT INTO `profils` (`id`, `nom`, `prenom`, `sexe`, `telephone`, `created`, `i
 (1, 'lahlou', 'hamza', 'homme', '06012873140', '2016-07-26 01:03:21', 'profil.jpg', 1),
 (2, '', '', '', '', '0000-00-00 00:00:00', '8027508010689508_831530923576463_3476372534942649749_n.jpg', 2),
 (4, '', '', '', '', '2016-07-28 20:48:04', 'profil.jpg', 4),
-(5, '', '', '', '', '2016-07-28 20:50:55', 'profil.jpg', 5);
+(5, '', '', '', '', '2016-07-28 20:50:55', 'profil.jpg', 5),
+(6, 'jalal', 'hamza', 'homme', '0601287314', '2016-07-30 02:27:01', '16032819120160627_001126.jpg', 6);
 
 -- --------------------------------------------------------
 
@@ -330,7 +352,8 @@ INSERT INTO `users` (`id`, `username`, `password`, `email`, `created`, `role`, `
 (2, 'admin', '4995c5278965e5dd6f1b7e32df922bca4ba0a4a7', 'admin@gmail.com', '2016-07-25 22:44:15', 'user', 1),
 (3, 'hamza', '795631beebc1850d4aac90c874978a017353fb7a', 'lahloudofus@gmail.com', '2016-07-15 00:00:00', 'admin', 0),
 (4, 'tetet', '2488b9c5c60b86afefb75c7d93ff5de0128c3aa3', 'tetetlahloudofus@gmail.com', '2016-07-28 20:47:14', 'user', 1),
-(5, 'poopopopopo', '4638fa36a61c66f97ef4a597e82c090fe8cf973a', 'efelahloudofus@gmail.com', '2016-07-28 20:50:25', 'user', 1);
+(5, 'poopopopopo', '4638fa36a61c66f97ef4a597e82c090fe8cf973a', 'efelahloudofus@gmail.com', '2016-07-28 20:50:25', 'user', 1),
+(6, 'jalal', '50f2e678d80249eb779a6e0877e9cc406bd122d5', 'jalallahloudofus@gmail.com', '2016-07-30 02:26:58', 'user', 1);
 
 -- --------------------------------------------------------
 
@@ -437,17 +460,17 @@ ALTER TABLE `villes`
 -- AUTO_INCREMENT pour la table `articles`
 --
 ALTER TABLE `articles`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=39;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=40;
 --
 -- AUTO_INCREMENT pour la table `articles_categories`
 --
 ALTER TABLE `articles_categories`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=58;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=60;
 --
 -- AUTO_INCREMENT pour la table `articles_galeries`
 --
 ALTER TABLE `articles_galeries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT pour la table `categories`
 --
@@ -462,7 +485,7 @@ ALTER TABLE `descriptions`
 -- AUTO_INCREMENT pour la table `galeries`
 --
 ALTER TABLE `galeries`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=33;
 --
 -- AUTO_INCREMENT pour la table `journals`
 --
@@ -472,7 +495,7 @@ ALTER TABLE `journals`
 -- AUTO_INCREMENT pour la table `medias`
 --
 ALTER TABLE `medias`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=59;
 --
 -- AUTO_INCREMENT pour la table `pays`
 --
@@ -482,12 +505,12 @@ ALTER TABLE `pays`
 -- AUTO_INCREMENT pour la table `profils`
 --
 ALTER TABLE `profils`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 --
 -- AUTO_INCREMENT pour la table `villes`
 --

@@ -12,6 +12,9 @@ class GaleriesController extends AppController
    public function beforeFilter() {
          parent::beforeFilter();
         $this->LoadModel("Profil");
+          $this->LoadModel("Galerie");
+         $this->LoadModel("Media");    
+
         $id=$this->Auth->user("id");
        $data=$this->Profil->find('first',array('conditions'=> array('user_id'=>$id)));
        $this->set("profil",$data);
@@ -132,12 +135,21 @@ class GaleriesController extends AppController
 
                            $nameFilter=str_replace(' ','-',basename($data['name'][$i]));
                            $chemin="GaleriesMedia/".$nameFilter;
-
                            $extension = pathinfo($chemin,PATHINFO_EXTENSION);
+                           if($extension=="png"||$extension=="jpg"||$extension=="gif"){
+                            $type=0;
+                           }else
+                           {
+                            $type=1;
+                           }
+
+                        
                            $this->Media->save(array(
                             "src"=>$nameFilter,
                             "extension"=>$extension,
-                            "galery_id"=>$galery_id
+                            "galery_id"=>$galery_id,
+                            "position"=>$i,
+                            "type"=>$type
 
                             ));
 
@@ -148,6 +160,8 @@ class GaleriesController extends AppController
 
 
                          }//fin foreach
+
+                         $this->Session->Setflash("Galeries Ajouter avec succès");
 
                     }//fin test
 
@@ -165,4 +179,195 @@ class GaleriesController extends AppController
 
 
   }
+
+
+
+
+
+
+
+
+  public function recherche(){
+
+  
+
+     if($this->request->is("post")){
+
+
+
+
+        $nom=$this->request->data["nom"];
+        $date=$this->request->data["date"];
+
+
+      
+
+
+
+        $this->set("Galerie",$this->Galerie->find('all',array(
+       'conditions'=> array('nom like'=>'%'.$nom.'%','created >'=>$date)
+
+  )));
+          
+
+
+        }else{
+
+             $data=$this->Galerie->find("all");
+        $this->set("Galerie",$data);
+        }
+    
+
+    
+
+
+  }
+
+
+
+
+       public function supprimer($id=null)
+
+       {
+         
+         if($id==null){$this->redirect(array('controller' => 'Galeries', 'action' => 'recherche'));}
+        $this->Galerie->delete($id);
+        $this->redirect(array('controller' => 'Galeries', 'action' => 'recherche'));
+         
+
+
+
+       }
+
+
+
+    
+    public function detail($id=null){
+
+
+if($id==null){$this->redirect(array('controller' => 'Galeries', 'action' => 'recherche'));}
+
+
+       $data=$this->Galerie->find("first",array('conditions'=>array(
+        'id'=>$id
+
+        )));
+        $this->set("Galerie",$data);
+
+         
+    }
+
+
+
+  public function modifier($id=null){
+
+    if($id==null){$this->redirect(array('controller' => 'Galeries', 'action' => 'recherche'));}
+
+   if($this->request->is('post')){
+
+       $NombreImg =0;
+       foreach ($this->request->data['sortID'] as $data) {
+          $NombreImg++;
+       }
+
+        
+
+       for ($i=0; $i <$NombreImg ; $i++) { 
+          $idMedia=$this->request->data["idMedia"][$i];
+          $this->Media->id=$idMedia;
+          $this->Media->saveField("position",$i);  
+         
+       }
+
+
+
+   }
+  
+
+       $data=$this->Media->find("all",array(
+        'recursive'=> -1,
+        'conditions'=>array('galery_id'=>$id),
+        'order'=> array('position ')
+
+        ));
+     
+      $this->set("data",$data);
+      
+    
+      
+
+
+  }
+
+
+
+
+
+  public function supprimerMedia($id=null,$idGalery=null){
+
+ if($id==null||$idGalery==null){
+      $this->redirect(array('controller' => 'Galeries', 'action' => 'recherche'));
+    }
+      $this->Media->delete($id);
+      $this->redirect(array('controller' => 'Galeries', 'action' => 'modifier/'.$idGalery));
+    
+  }
+
+
+
+
+    public function AddMedia(){
+
+     
+   $galery_id=$this->request->data["Media"];
+   $position=$this->request->data["position"];
+   
+   $tmp_name=$this->request->params['form']["Media"]["tmp_name"];
+
+   $nameFilter=str_replace(' ','-',basename($this->request->params['form']["Media"]["name"]));
+   $chemin="GaleriesMedia/".$nameFilter;
+
+    $extension = pathinfo($chemin,PATHINFO_EXTENSION);
+    if($extension=="png"||$extension=="jpg"||$extension=="gif"){
+          $type=0;}else {  $type=1; }
+  
+
+   
+
+
+       if(move_uploaded_file($tmp_name,$chemin)){
+         debug($nameFilter);
+
+
+                           $this->Media->save(array(
+                            "src"=>$nameFilter,
+                            "extension"=>$extension,
+                            "galery_id"=>$galery_id,
+                            "position"=>$position,
+                            "type"=>$type
+
+                            ));
+         
+
+                            
+                           }
+
+
+
+
+     
+    $this->redirect(array('controller' => 'Galeries', 'action' => 'modifier/'.$galery_id));
+    
+  }
+
+
+
+
+
+
+
+
+
+
+
 }

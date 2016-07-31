@@ -5,7 +5,7 @@
 <div class="row">
 <section class="col-md-2">
   
-<h2>Publier Acticle</h2>
+<h2>Ajouter Galeries</h2>
 
 </section>
 <section class="col-md-8" >
